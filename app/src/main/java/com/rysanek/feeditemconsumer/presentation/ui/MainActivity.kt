@@ -116,7 +116,6 @@ class MainActivity: AppCompatActivity() {
     private fun observeFeedItemsList() {
         viewModel.feedItemsList.asLiveData().observe(this) { liveData ->
             liveData.observe(this) { feedItemsList ->
-                Log.d("Main", "${feedItemsList?.toString()}")
                 feedItemsAdapter.setData(feedItemsList ?: emptyList())
             }
         }
@@ -138,8 +137,7 @@ class MainActivity: AppCompatActivity() {
                 binding.progressBar.gone()
                 Snackbar.make(binding.root, state.message, Snackbar.LENGTH_SHORT).show()
             }
-            else -> { /* NO-OP */
-            }
+            else -> { /* NO-OP */ }
         }
     }
     

@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object Cache {
-    
+    // Instantiates the database and provides a singleton DAO object for caching data
     @Provides
     @Singleton
     fun provideFeedItemsDatabase(

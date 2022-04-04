@@ -10,7 +10,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object Network {
-    
+    /*Simulate passing an API object to the repository for network data fetching*/
     @Singleton
     @Provides
     fun provideMockClient(): MockClient = MockClient

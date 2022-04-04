@@ -49,14 +49,6 @@ class SlideShowViewHolder(private val binding: LayoutSlideShowBinding): Recycler
             
             layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
             
-//            val coverFlowViewTransformer = CoverFlowViewTransformer().apply {
-//                yProjection = 90.0
-//                offsetXPercent = .6f
-//            }
-//
-//            gravity = Gravity.CENTER
-//            transformer = coverFlowViewTransformer
-            
         }
     }
 }

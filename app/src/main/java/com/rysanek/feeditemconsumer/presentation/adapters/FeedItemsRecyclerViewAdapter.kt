@@ -1,6 +1,5 @@
 package com.rysanek.feeditemconsumer.presentation.adapters
 
-import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rysanek.feeditemconsumer.data.local.entities.FeedItemEntity
@@ -68,35 +67,13 @@ class FeedItemsRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder
     
     private fun inflateViewHolderFromViewType(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
-            0 -> {
-                Log.d("RV", "BIGTOP VIEWHOLDER")
-                BigTopViewHolder.from(parent)
-            }
+            0 -> BigTopViewHolder.from(parent)
+            1 -> RiverViewHolder.from(parent)
+            2 -> AdViewHolder.from(parent)
+            3 -> HouseAdViewHolder.from(parent)
+            4 -> SlideShowViewHolder.from(parent)
+            else -> BigTopViewHolder.from(parent)
             
-            1 -> {
-                Log.d("RV", "RIVER VIEWHOLDER")
-                RiverViewHolder.from(parent)
-            }
-            
-            2 -> {
-                Log.d("RV", "AD VIEWHOLDER")
-                AdViewHolder.from(parent)
-            }
-            
-            3 -> {
-                Log.d("RV", "HOUSE AD VIEWHOLDER")
-                HouseAdViewHolder.from(parent)
-            }
-            
-            4 -> {
-                Log.d("RV", "SLIDE SHOW VIEWHOLDER")
-                SlideShowViewHolder.from(parent)
-            }
-    
-            else -> {
-                Log.d("RV", "BIGTOP VIEWHOLDER")
-                BigTopViewHolder.from(parent)
-            }
         }
     }
 }

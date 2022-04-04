@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdRequest
 import com.rysanek.feeditemconsumer.data.local.entities.FeedItemEntity
-import com.rysanek.feeditemconsumer.data.remote.models.Component
 import com.rysanek.feeditemconsumer.databinding.LayoutAdBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

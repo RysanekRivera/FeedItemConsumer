@@ -4,6 +4,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rysanek.feeditemconsumer.data.local.entities.FeedItemEntity
 
+/**
+ * This Class handles list changes on a [RecyclerView] minimizing the update operations when
+ * display changes from one list into another.
+ * **/
 class FeedItemsDiffUtil(private val oldList: List<FeedItemEntity>, private val newList: List<FeedItemEntity>): DiffUtil.Callback() {
     
     override fun getOldListSize() = oldList.size

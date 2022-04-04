@@ -36,16 +36,20 @@ class FeedItemsViewModel @Inject constructor(
     private val _downloadState: MutableStateFlow<DownloadState> = MutableStateFlow(DownloadState.Idle)
     val downloadState: StateFlow<DownloadState> get() = _downloadState
     
+    /*
+     monitors different LiveData depending on the filter selected by the user.
+     The default is to getAllFeedItemsList from the cache
+     Returns the correct LiveData either all or sorted by Component, which then passes the list to
+     the adapter.
+    */
     private var _feedItemsList = MutableStateFlow(cacheData.getAllFeedItemsList())
     val feedItemsList get() = _feedItemsList
     
-    fun launchFeedItemsFetch() = viewModelScope.launch(Dispatchers.IO) {
-        fetchData()
-    }
+    // Launches the request to fetch data
+    fun launchFeedItemsFetch() = viewModelScope.launch(Dispatchers.IO) { fetchData() }
     
-    fun resetDownloadState() = viewModelScope.launch{
-        _downloadState.emit(DownloadState.Idle)
-    }
+    // Resets the download state to idle
+    fun resetDownloadState() = viewModelScope.launch{ _downloadState.emit(DownloadState.Idle) }
     
     private suspend fun fetchData() {
         _downloadState.emit(DownloadState.Downloading)
@@ -63,7 +67,6 @@ class FeedItemsViewModel @Inject constructor(
     }
     
     fun setSortedList(menuItem: MenuItem): Boolean {
-        Log.d("VM", "menuItemId: ${menuItem.itemId}")
         
         when(menuItem.itemId) {
             R.id.miNoFilter -> viewModelScope.launch { _feedItemsList.emit(cacheData.getAllFeedItemsList()) }

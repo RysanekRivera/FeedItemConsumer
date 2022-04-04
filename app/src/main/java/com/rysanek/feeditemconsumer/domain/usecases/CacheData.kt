@@ -4,7 +4,11 @@ import com.rysanek.feeditemconsumer.data.local.entities.FeedItemEntity
 import com.rysanek.feeditemconsumer.data.remote.models.Component
 import com.rysanek.feeditemconsumer.domain.repositories.FeedItemsRepositoryImpl
 import javax.inject.Inject
-
+/**
+ * This Use Case Provides the functionality to cache data, refresh the cache and retrieve data
+ * from the cache.
+ * @param [repository] The repository with access to the database.
+ * **/
 class CacheData @Inject constructor(
     private val repository: FeedItemsRepositoryImpl
 ) {
