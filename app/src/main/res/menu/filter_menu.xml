@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/topGroup">
+        <item android:id="@+id/miTitle"
+            android:title="Filter Options:"/>
+    </group>
+
+    <group android:id="@+id/bottomGroup" android:enabled="true">
+
+        <item
+            android:id="@+id/miNoFilter"
+            android:title="No Filter"
+            android:icon="@drawable/ic_no_filter"
+            android:iconTint="@color/red"/>
+
+        <item
+            android:id="@+id/miBigTop"
+            android:title="Big Top"
+            android:icon="@drawable/ic_big_top"
+            android:iconTint="@color/orange"/>
+
+        <item
+            android:id="@+id/miRiver"
+            android:title="River"
+            android:icon="@drawable/ic_river"
+            android:iconTint="@color/light_blue"/>
+
+        <item
+            android:id="@+id/miAd"
+            android:title="Ad"
+            android:icon="@drawable/ic_ad"
+            android:iconTint="@color/pink"/>
+
+        <item
+            android:id="@+id/miHouseAd"
+            android:title="House Ad"
+            android:icon="@drawable/ic_house_ad"
+            android:iconTint="@color/yellow"/>
+
+        <item
+            android:id="@+id/miSlideShow"
+            android:title="Slide Show"
+            android:icon="@drawable/ic_slide_show"
+            android:iconTint="@color/green"/>
+    </group>
+
+</menu>
