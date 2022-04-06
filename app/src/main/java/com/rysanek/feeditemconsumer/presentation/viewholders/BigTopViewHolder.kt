@@ -11,7 +11,8 @@ class BigTopViewHolder(private val binding: LayoutBigTopBinding): RecyclerView.V
         fun from(parent: ViewGroup): BigTopViewHolder = BigTopViewHolder(LayoutBigTopBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
     
-    fun bind(feedItem: FeedItemEntity) {
+    fun bind(feedItem: FeedItemEntity, onItemClickListener: (FeedItemEntity) -> Unit) {
         binding.textView2.text = feedItem.headline
+        binding.root.setOnClickListener { onItemClickListener(feedItem) }
     }
 }

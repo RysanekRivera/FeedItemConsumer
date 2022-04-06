@@ -11,7 +11,9 @@ import com.rysanek.feeditemconsumer.presentation.viewholders.HouseAdViewHolder
 import com.rysanek.feeditemconsumer.presentation.viewholders.RiverViewHolder
 import com.rysanek.feeditemconsumer.presentation.viewholders.slideshow.SlideShowViewHolder
 
-class FeedItemsRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FeedItemsRecyclerViewAdapter(
+    var onItemClickListener: (FeedItemEntity) -> Unit
+): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val currentFeedItemsList: MutableList<FeedItemEntity> = mutableListOf()
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -23,24 +25,24 @@ class FeedItemsRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder
         
         when(holder){
             is BigTopViewHolder -> {
-                holder.bind(currentFeedItem)
+                holder.bind(currentFeedItem, onItemClickListener)
             }
             
             is RiverViewHolder -> {
-                holder.bind(currentFeedItem)
+                holder.bind(currentFeedItem, onItemClickListener)
             }
             
             is AdViewHolder -> {
-                holder.bind(currentFeedItem)
+                holder.bind(currentFeedItem, onItemClickListener)
             }
             
             is HouseAdViewHolder -> {
-                holder.bind(currentFeedItem)
+                holder.bind(currentFeedItem, onItemClickListener)
             }
             
             is SlideShowViewHolder ->{
                 holder.setupCarouselView()
-                holder.bind(currentFeedItem)
+                holder.bind(currentFeedItem, onItemClickListener)
             }
         }
     }

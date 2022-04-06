@@ -25,9 +25,10 @@ class HouseAdViewHolder(private val binding: LayoutHouseAdBinding): RecyclerView
         )
     }
     
-    fun bind(feedItem: FeedItemEntity) {
+    fun bind(feedItem: FeedItemEntity, onItemClickListener: (FeedItemEntity) -> Unit) {
         
         binding.textView5.text = feedItem.headline
+        binding.root.setOnClickListener { onItemClickListener(feedItem) }
     
         if (adRequest != null) {
             binding.houseAdView.loadAd(adRequest!!)

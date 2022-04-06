@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rysanek.feeditemconsumer.databinding.SingleCarouselItemBinding
 import com.rysanek.feeditemconsumer.presentation.viewholders.slideshow.ItemModel
 
-class SlideShowAdapter: RecyclerView.Adapter<SlideShowAdapter.SlideShowViewHolder>() {
+class SlideShowAdapter(
+    var onItemClickListener: (ItemModel) -> Unit
+): RecyclerView.Adapter<SlideShowAdapter.SlideShowViewHolder>() {
     private val itemsList = mutableListOf<ItemModel>()
     
     class SlideShowViewHolder(private val binding: SingleCarouselItemBinding): RecyclerView.ViewHolder(binding.root){
@@ -20,8 +22,9 @@ class SlideShowAdapter: RecyclerView.Adapter<SlideShowAdapter.SlideShowViewHolde
             }
         }
         
-        fun bind(itemModel: ItemModel){
+        fun bind(itemModel: ItemModel, onItemClickListener: (ItemModel) -> Unit){
             binding.imageView.setImageDrawable(ContextCompat.getDrawable(binding.root.context, itemModel.image))
+            binding.root.setOnClickListener { onItemClickListener(itemModel) }
         }
     }
     
@@ -31,7 +34,7 @@ class SlideShowAdapter: RecyclerView.Adapter<SlideShowAdapter.SlideShowViewHolde
     
     override fun onBindViewHolder(holder: SlideShowViewHolder, position: Int) {
         val currentItem = itemsList[position]
-        holder.bind(currentItem)
+        holder.bind(currentItem, onItemClickListener)
     }
     
     @SuppressLint("NotifyDataSetChanged")

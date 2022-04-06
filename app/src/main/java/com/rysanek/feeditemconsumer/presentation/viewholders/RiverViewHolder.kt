@@ -20,8 +20,9 @@ class RiverViewHolder(private val binding: LayoutRiverBinding): RecyclerView.Vie
             )
     }
     
-    fun bind(feedItem: FeedItemEntity) {
+    fun bind(feedItem: FeedItemEntity, onItemClickListener: (FeedItemEntity) -> Unit) {
         binding.textView.text = feedItem.headline
+        binding.root.setOnClickListener { onItemClickListener(feedItem) }
         Glide.with(binding.root.context)
             .load("https://github.com/RysanekRivera/FeedItemConsumer/blob/master/river.jpg?raw=true")
             .centerCrop()

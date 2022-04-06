@@ -1,9 +1,11 @@
 package com.rysanek.feeditemconsumer.presentation.viewholders.slideshow
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.rysanek.feeditemconsumer.R
 import com.rysanek.feeditemconsumer.data.local.entities.FeedItemEntity
 import com.rysanek.feeditemconsumer.databinding.LayoutSlideShowBinding
@@ -20,11 +22,11 @@ class SlideShowViewHolder(private val binding: LayoutSlideShowBinding): Recycler
                 false
             )
         )
-        
     }
     
-    fun bind(feedItem: FeedItemEntity) {
+    fun bind(feedItem: FeedItemEntity, onItemClickListener: (FeedItemEntity) -> Unit) {
         binding.textView6.text = feedItem.headline
+        binding.root.setOnClickListener { onItemClickListener(feedItem) }
     }
     
     fun setupCarouselView() {
@@ -37,7 +39,11 @@ class SlideShowViewHolder(private val binding: LayoutSlideShowBinding): Recycler
             ItemModel("Aquaman", "The ruler of the seas", R.drawable.aquaman)
         )
         
-        slideShowAdapter =  SlideShowAdapter()
+        slideShowAdapter =  SlideShowAdapter {
+            Snackbar.make(binding.root, "Clicked on: ${it.title}", Snackbar.LENGTH_SHORT).apply {
+                setBackgroundTint(Color.parseColor("#008c21"))
+            }.show()
+        }
         
         binding.rvCarouselView.apply {
             

@@ -58,7 +58,9 @@ class MainActivity: AppCompatActivity() {
     
     private fun setupRecyclerView() {
         
-        feedItemsAdapter = FeedItemsRecyclerViewAdapter()
+        feedItemsAdapter = FeedItemsRecyclerViewAdapter {
+            Snackbar.make(binding.root, it.headline, Snackbar.LENGTH_SHORT).show()
+        }
         
         with(binding.rvFeedItems) {
             

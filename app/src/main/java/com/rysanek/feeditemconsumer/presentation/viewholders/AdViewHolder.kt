@@ -28,10 +28,11 @@ class AdViewHolder(private val binding: LayoutAdBinding): RecyclerView.ViewHolde
         }
     }
     
-    fun bind(feedItem: FeedItemEntity) {
+    fun bind(feedItem: FeedItemEntity, onItemClickListener: (FeedItemEntity) -> Unit) {
         
         binding.textView4.text = feedItem.headline
-        
+        binding.root.setOnClickListener { onItemClickListener(feedItem) }
+    
         if (adRequest != null) {
             binding.adView.loadAd(adRequest!!)
         } else {
